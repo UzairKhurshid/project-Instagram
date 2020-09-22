@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Profile Image</h1>
+        <form method="POST" action="/updateprofileImage/{{userAccount._id}}" enctype="multipart/form-data">
+            {{#if userAccount.profileImage}}
+                <img src="data:image/jpeg;base64, {{userAccount.profileImage}}" height="200px" width="200px" style="border-radius: 50%;"><br>
+            {{else}}
+                <img src="images/profile.png" height="200px" width="200px" style="border-radius: 50%;"><br>
+            {{/if}}
+            <input type="file" name="avatar" accept="image/png,,image/jpeg,image/jpg " />
+            <button type="submit" >Update Profile Picture</button>
+        </form>
+        <h1>profile Information</h1>
+        <form method="POST" action="/updateprofile">
+            <label>Username</label>
+            <input type="text" name="username" value="{{userAccount.username}}" >
+            <label>Email</label>
+            <input type="email" name="email" value="{{userAccount.email}}" >
+            <label>Password</label>
+            <input type="password" name="password">
+            <label>Account Privacy</label>
+            <select name="privacy" id="privacy">
+                <option value="private">Private</option>
+                <option value="public">Public</option>
+            </select>
+            <script type="text/javascript">
+                $('#privacy option[value="{{userAccount.privacy}}"]').prop('selected', true)
+            </script>
+            <button type="submit">Update Profile</button>
+        </form>
+    </body>
+</html>

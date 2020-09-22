@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <h1>Inbox</h1><br><br><br><br><br>
+        {{#if chats}}
+            {{#each chats}}
+                <a href="/sendMessage/{{this.friendAccID}}"><h3>{{this.username}}</h3></a>
+            {{/each}}
+        {{/if}}
+    </body>
+</html> 

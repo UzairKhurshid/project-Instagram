@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Add New Comment</h1>
+        <form method="POST" action="/addNewComment/{{postID}}">
+            <label>Comment Text</label>
+            <input type="text" name="commentText"  >
+            <button type="submit">add comment</button>
+        </form>
+    </body>
+</html>

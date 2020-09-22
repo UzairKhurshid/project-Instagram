@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Messages</h1>
+        <p>messages here are consoled</p>
+        <form id="form1" method="POST" action="/sendMessage/{{friendAccID}}" enctype="multipart/form-data">
+            <img src="images/addImage.png" id="img_url" alt="your image" height="200px" width="200px">
+            <input type="file" name="avatar" id="img_file" onChange="img_pathUrl(this);" multiple><br>
+            <label>text</label>
+            <input type="text" name="msgText">
+            <br>
+            <button type="submit">Send Message</button>
+        </form>
+    <script type="text/javascript">
+         function img_pathUrl(input){
+            $('#img_url')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
+        }
+    </script>
+    </body>
+</html>
