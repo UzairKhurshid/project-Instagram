@@ -1,0 +1,9 @@
+server is up and running on port :\\.\pipe\6252454f-e586-4d02-a448-31ddcf1c59bd
+a
+{ email: 'abcsardar.uzair12@gmail.com', password: 'uzair123' }
+a
+{
+  username: 'uzairKhurshid',
+  email: 'abcsardar.uzair12@gmail.com',
+  password: 'uzair123'
+}

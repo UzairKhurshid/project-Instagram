@@ -1,0 +1,8 @@
+server is up and running on port :\\.\pipe\a14b357e-57e0-4540-b1c6-3b2e56063dce
+a
+{
+  username: 'uzairkhurshid',
+  email: 'abc12@gmail.com',
+  password: 'abc123'
+}
+API Successfully Checked

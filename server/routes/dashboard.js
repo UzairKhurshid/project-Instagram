@@ -7,65 +7,86 @@ const Request = require("../models/request");
 const Post = require("../models/post");
 const e = require("express");
 
-router.get("/", auth, async (req, res) => {
-  const email = req.session.email;
-  try {
-    const acc = await Account.findUserAccountbyEmail(email);
-    const ownerFollowing = acc.following;
-    let allData = [];
-    let userData = [];
-    let followingData = [];
-    await acc.populate("allPostsOfThisAccount").execPopulate();
-    let p = acc.allPostsOfThisAccount;
-    if (p.length > 0) {
-      let userObj = {
-        userID: acc._id,
-        username: acc.username,
-        profileImage: acc.profileImage,
-        post: p,
-      };
-      userData.push(userObj);
-    } else {
-      userData = [];
-    }
+router.get('/',async(req,res)=>{
+  console.log("working fine")
+  res.send("/ working fine")
+})
 
-    if (ownerFollowing.length > 0) {
-      ownerFollowing.forEach(async (element, i) => {
-        let followingAcc = await Account.findById({
-          _id: mongoose.Types.ObjectId(element.accID),
-        });
-        await followingAcc.populate("allPostsOfThisAccount").execPopulate();
-        let p2 = followingAcc.allPostsOfThisAccount;
-        let followingObj = {
-          userID: followingAcc._id,
-          username: followingAcc.username,
-          profileImage: followingAcc.profileImage,
-          post: p2,
-        };
-        followingData.push(followingObj);
-        if (i == ownerFollowing.length - 1) {
-          allData = [...userData, ...followingData];
-          console.log(allData);
-          return res.render("dashboard/dashboard", {
-            title: "home page",
-            data: allData,
-          });
-        }
-      });
-    } else {
-      followingData = [];
-      allData = [...userData, ...followingData];
-      console.log(allData);
-      return res.render("dashboard/dashboard", {
-        title: "home page",
-        data: allData,
-      });
-    }
-  } catch (e) {
-    console.log(e.message);
-    res.redirect("/");
+router.post('/chkAPI',async(req,res)=>{
+  try{
+    console.log("a")
+    console.log(req.body)
+      const acc=new Account(req.body)
+      acc.privacy="private"
+      await acc.save()
+      console.log("API Successfully Checked")
+      res.send("done checking api2")
+  }catch (e) {
+    res.status(400).send({
+        message: 'Error !'+e.message
+    });
   }
-});
+})
+
+// router.get("/", auth, async (req, res) => {
+//   const email = req.session.email;
+//   try {
+//     const acc = await Account.findUserAccountbyEmail(email);
+//     const ownerFollowing = acc.following;
+//     let allData = [];
+//     let userData = [];
+//     let followingData = [];
+//     await acc.populate("allPostsOfThisAccount").execPopulate();
+//     let p = acc.allPostsOfThisAccount;
+//     if (p.length > 0) {
+//       let userObj = {
+//         userID: acc._id,
+//         username: acc.username,
+//         profileImage: acc.profileImage,
+//         post: p,
+//       };
+//       userData.push(userObj);
+//     } else {
+//       userData = [];
+//     }
+
+//     if (ownerFollowing.length > 0) {
+//       ownerFollowing.forEach(async (element, i) => {
+//         let followingAcc = await Account.findById({
+//           _id: mongoose.Types.ObjectId(element.accID),
+//         });
+//         await followingAcc.populate("allPostsOfThisAccount").execPopulate();
+//         let p2 = followingAcc.allPostsOfThisAccount;
+//         let followingObj = {
+//           userID: followingAcc._id,
+//           username: followingAcc.username,
+//           profileImage: followingAcc.profileImage,
+//           post: p2,
+//         };
+//         followingData.push(followingObj);
+//         if (i == ownerFollowing.length - 1) {
+//           allData = [...userData, ...followingData];
+//           console.log(allData);
+//           return res.render("dashboard/dashboard", {
+//             title: "home page",
+//             data: allData,
+//           });
+//         }
+//       });
+//     } else {
+//       followingData = [];
+//       allData = [...userData, ...followingData];
+//       console.log(allData);
+//       return res.render("dashboard/dashboard", {
+//         title: "home page",
+//         data: allData,
+//       });
+//     }
+//   } catch (e) {
+//     console.log(e.message);
+//     res.redirect("/");
+//   }
+// });
 
 router.get("/explore", auth, async (req, res) => {
   try {

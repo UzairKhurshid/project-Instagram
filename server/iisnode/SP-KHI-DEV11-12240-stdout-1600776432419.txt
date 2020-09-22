@@ -1,0 +1,8 @@
+server is up and running on port :3000
+a
+{
+  username: 'uzairkhurshid',
+  email: 'abc12@gmail.com',
+  password: 'abc123'
+}
+API Successfully Checked

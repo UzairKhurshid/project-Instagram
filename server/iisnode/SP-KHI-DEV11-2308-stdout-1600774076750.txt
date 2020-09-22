@@ -1,0 +1,10 @@
+server is up and running on port :\\.\pipe\428e358a-b20b-4f71-aa57-eb7867d3692b
+a
+{ email: 'abcsardar.uzair12@gmail.com', password: 'uzair123' }
+Account validation failed: username: Path `username` is required.
+a
+{ email: 'abcsardar.uzair12@gmail.com', password: 'uzair123' }
+Account validation failed: username: Path `username` is required.
+a
+{ email: 'abcsardar.uzair12@gmail.com', password: 'uzair123' }
+Account validation failed: username: Path `username` is required.

@@ -60,7 +60,7 @@ app.get('*',(req,res)=>{
         title:'Page Not Found'
     })
 })
-
-app.listen(3000,()=>{
-    console.log("server is up and running")
+var port=process.env.PORT || 3000
+app.listen(port,()=>{
+    console.log("server is up and running on port :3000")
 })

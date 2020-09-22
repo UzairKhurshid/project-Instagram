@@ -1,0 +1,15 @@
+server is up and running on port :3000
+working fine
+a
+{
+  username: 'uzairkhurshid1',
+  email: 'a1bc12@gmail.com',
+  password: 'abc123'
+}
+a
+{
+  username: 'uzairkhurshid12',
+  email: 'a12bc12@gmail.com',
+  password: 'abc123'
+}
+API Successfully Checked
